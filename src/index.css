@@ -4,8 +4,10 @@
 
 @layer components {
     .btn-p {
-      @apply text-[20px] text-white bg-[#0e898e] p-4 rounded-[24px] hover:scale-110 hover:bg-[#172627] hover:text-[#0e898e] transition-all;
+      @apply text-[20px] text-white bg-[#0e898e] p-4 rounded-[24px] hover:scale-110 hover:bg-[#172627] hover:text-[#0e898e] transition-all ease-in duration-300;
     }
-  
+    .nav-t {
+       @apply inline-block text-[16px] hover:font-semibold hover:text-pri hover:rounded-sm hover:scale-125 transition-all duration-300 ease-in-out
+    }
   }
   
