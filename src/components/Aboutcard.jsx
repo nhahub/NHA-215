@@ -2,7 +2,7 @@ import React from 'react'
 
 const Aboutcard = ({text, icon}) => {
   return (
-    <div className=' w-[350px] h-[380px] bg-[#0e898e] rounded-3xl px-12 py-20 hover:translate-y-[-8px] transition-all'>
+    <div className=' w-[350px] h-[380px] bg-sec rounded-3xl px-12 py-20 hover:translate-y-[-8px] transition-all shadow-xl'>
         <i className={icon}></i>
         <h3 className=' px-2 py-6 text-white text-[28px] font-bold'>{text}</h3>
 
