@@ -1,4 +1,5 @@
 import React, { useReducer, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
 // --- Initial state & reducer ---
 const initialState = {
@@ -50,6 +51,7 @@ export default function SignInForm() {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { values, errors, touched, loading, serverError, success, showPassword } = state;
   const emailRef = useRef(null);
+  const navigate = useNavigate("");
 
   React.useEffect(() => {
     const e = validate(values);
@@ -109,7 +111,7 @@ export default function SignInForm() {
   }
 
   return (
-  <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#090f0fff] to-[#0c5c5fff] text-white p-4 animate-ultraSmoothFadeIn">
+  <div className="min-h-[calc(100vh-72px)] flex items-center justify-center bg-gradient-to-br from-[#090f0fff] to-[#0c5c5fff] text-white p-4 animate-ultraSmoothFadeIn">
 
 
       <form
@@ -182,17 +184,18 @@ export default function SignInForm() {
           )}
         </label>
 
+        <div className="flex items-center content-center justify-between">
         {/* Submit */}
         <button
           type="submit"
           disabled={loading || Object.keys(errors).length > 0}
-          className={`w-full inline-flex justify-center items-center gap-2 rounded-md px-4 py-2 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-green-400
+          className={`w-[250px] inline-flex justify-center items-center gap-2 rounded-md px-2 py-2 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-green-400
             ${loading || Object.keys(errors).length > 0
               ? "bg-[#275053ff] bg-opacity-40 text-white cursor-not-allowed"
               : "bg-[#275053ff] hover:bg-[#0E898E] text-white shadow-md hover:shadow-green-500/40 transition duration-300"
             }`}
-          aria-busy={loading}
-        >
+            aria-busy={loading}
+            >
           {loading ? (
             <svg className="h-4 w-4 animate-spin" viewBox="0 0 24 24" fill="none">
               <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" strokeOpacity="0.2" />
@@ -201,6 +204,14 @@ export default function SignInForm() {
           ) : null}
           Sign In
         </button>
+        {/* SingUp */}
+        <button
+        onClick={() => navigate("/signup")}
+        className="text-[12px] text-gray-400 hover:text-[#20bec4ff] hover:underline"
+        >
+        To create an account!
+        </button>
+        </div>
       </form>
     </div>
   );

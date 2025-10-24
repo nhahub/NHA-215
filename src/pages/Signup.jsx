@@ -1,4 +1,5 @@
 import React, { useReducer, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
 // --- Initial state & reducer (same as before) ---
 const initialState = {
@@ -65,6 +66,7 @@ export default function SignUpForm() {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { values, errors, touched, loading, serverError, success, showPassword } = state;
   const emailRef = useRef(null);
+  const navigate = useNavigate("");
 
   React.useEffect(() => {
     const e = validate(values);
@@ -126,7 +128,7 @@ export default function SignUpForm() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#090f0fff] to-[#0c5c5fff] text-white p-4 animate-ultraSmoothFadeIn">
+    <div className="min-h-[calc(100vh-72px)] flex items-center justify-center bg-gradient-to-br from-[#090f0fff] to-[#0c5c5fff] text-white p-4 animate-ultraSmoothFadeIn">
       <form
         onSubmit={handleSubmit}
         noValidate
@@ -288,8 +290,13 @@ export default function SignUpForm() {
             )}
             Create account
           </button>
+          <button
+        onClick={() => navigate("/signin")}
+        className="text-[12px] text-gray-400 hover:text-[#20bec4ff] hover:underline"
+        >
+        Already registered?
+        </button>
 
-          <a href="/SignIn" className="text-sm text-gray-400 hover:text-[#20bec4ff] hover:underline">Already registered?</a>
         </div>
       </form>
     </div>
