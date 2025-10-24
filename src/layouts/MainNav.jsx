@@ -9,6 +9,7 @@ const MainNav = () => {
         <nav className=" flex text-white gap-8">
             <NavLink to='/' className='nav-t'> Home</NavLink>
             <NavLink to='/About' className='nav-t'> About</NavLink>
+            <NavLink to='/Chatbot' className='nav-t'> Chatbot</NavLink>
         </nav>
         <button className=""></button>
     </div>
