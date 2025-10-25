@@ -8,6 +8,7 @@ import SignIn from "./pages/SignIn";
 import Signup from "./pages/Signup";
 import Chatbot from "./pages/Chatbot";
 import Errorpage from "./pages/Errorpage";
+import Logout from "./pages/Logout";
 function App() {
   return (
     <>
@@ -20,6 +21,7 @@ function App() {
         <Route path="/" element={<Home />} /> {/* in nav bar */}
         <Route path="/about" element={<About />} /> {/* in nav bar */}
         <Route path="/chatbot" element={<Chatbot />} /> {/* in nav bar */}
+        <Route path="/logout" element={<Logout />} /> {/* in nav bar */}
         <Route path="/signin" element={<SignIn />} /> {/* in About */}
         <Route path="/signup" element={<Signup />} /> {/* in Singin */}
       </Routes>

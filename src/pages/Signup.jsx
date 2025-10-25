@@ -1,5 +1,7 @@
 import React, { useReducer, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebase";
 
 // --- Initial state & reducer (same as before) ---
 const initialState = {
@@ -95,24 +97,20 @@ export default function SignUpForm() {
 
     dispatch({ type: "SET_LOADING", loading: true });
     try {
-      const resp = await fetch("/api/signup", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name: values.name, email: values.email, password: values.password }),
-        credentials: "include",
-      });
+      const userCredential = await createUserWithEmailAndPassword(auth, values.email, values.password);
+      const user = userCredential.user;
+      const token = await user.getIdToken();
 
-      const data = await resp.json();
-
-      if (!resp.ok) {
-        dispatch({ type: "SET_SERVER_ERROR", error: data.error || "Signup failed" });
-        if (data.field === "email" && emailRef.current) emailRef.current.focus();
-        return;
-      }
-
+      localStorage.setItem("userToken", token);
+      localStorage.setItem("userEmail", user.email);
+    
       dispatch({ type: "SET_SUCCESS" });
+      setTimeout(() => navigate("/"), 2000);
     } catch (err) {
-      dispatch({ type: "SET_SERVER_ERROR", error: "Network error. Try again." });
+      dispatch({
+        type: "SET_SERVER_ERROR",
+        error: err.message || "Signup failed",
+      });
     }
   };
 
@@ -120,9 +118,10 @@ export default function SignUpForm() {
 
   if (success) {
     return (
-      <div className="max-w-md mx-auto mt-16 p-6 bg-[#121212] rounded-lg shadow text-white">
+      <div className="min-h-[calc(100vh-72px)] flex items-center justify-center bg-gradient-to-br from-[#090f0fff] to-[#0c5c5fff] text-white p-6 animate-ultraSmoothFadeIn">
+      <div className="max-w-md mx-auto p-6 bg-[#121212] rounded-lg shadow text-white">
         <h2 className="text-2xl font-semibold mb-4 text-green-400">Account created 🎉</h2>
-        <p className="text-gray-300">Check your email to verify your account. Redirecting…</p>
+      </div>
       </div>
     );
   }

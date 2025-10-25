@@ -67,6 +67,7 @@ const Chatbot = () => {
                     className=' w-full h-[30px] text-[16px] text-white bg-red-600 rounded-3xl hover:bg-red-900 transition-all ease-in duration-300' >
                     Clear
                     </button>
+                    <i class="fa-solid fa-paper-plane text-white"></i>
                 </div>
             </div>
         </div>
