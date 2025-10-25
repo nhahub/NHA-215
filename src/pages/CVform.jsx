@@ -280,7 +280,7 @@ export default function CVFormUploader({ onSuccessRedirect }) {
 
   /* ----------------- Main UI: upload bubble + form ----------------- */
   return (
-    <div className="min-h-screen flex items-center justify-center p-6 bg-gradient-to-br from-[#010d0d] to-[#023437] text-white">
+    <div className="flex items-center justify-center p-6 bg-gradient-to-br from-[#010d0d] to-[#023437] text-white">
       <div className="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Left: big speech-bubble upload */}
         <div className="relative rounded-2xl bg-gradient-to-b from-[#bfeee9] to-[#c7f3ea] p-8 shadow-2xl border border-[#0c3c3a] flex flex-col items-center">
