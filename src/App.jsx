@@ -9,6 +9,7 @@ import Signup from "./pages/Signup";
 import Chatbot from "./pages/Chatbot";
 import Errorpage from "./pages/Errorpage";
 import Logout from "./pages/Logout";
+import CVform from "./pages/CVform";
 function App() {
   return (
     <>
@@ -24,6 +25,7 @@ function App() {
         <Route path="/logout" element={<Logout />} /> {/* in nav bar */}
         <Route path="/signin" element={<SignIn />} /> {/* in About */}
         <Route path="/signup" element={<Signup />} /> {/* in Singin */}
+        <Route path="/CVform" element={<CVform />} /> {/* in Singin */}
       </Routes>
       {/* end routes */}
     </>
