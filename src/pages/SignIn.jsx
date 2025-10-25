@@ -1,5 +1,7 @@
 import React, { useReducer, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebase"; 
 
 // --- Initial state & reducer ---
 const initialState = {
@@ -79,33 +81,36 @@ export default function SignInForm() {
 
     dispatch({ type: "SET_LOADING", loading: true });
     try {
-      const resp = await fetch("/api/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: values.email, password: values.password }),
-        credentials: "include",
-      });
+      // Firebase Authentication
+      const userCredential = await signInWithEmailAndPassword(auth, values.email, values.password);
 
-      const data = await resp.json();
+      // Generate Token
+      const token = await userCredential.user.getIdToken();
+      console.log("Generated Token:", token);
 
-      if (!resp.ok) {
-        dispatch({ type: "SET_SERVER_ERROR", error: data.error || "Login failed" });
-        if (emailRef.current) emailRef.current.focus();
-        return;
-      }
+      // Store Token in localStorage
+      localStorage.setItem("userToken", token);
+
+
 
       dispatch({ type: "SET_SUCCESS" });
       // Redirect here if needed
     } catch (err) {
-      dispatch({ type: "SET_SERVER_ERROR", error: "Network error. Try again." });
+      dispatch({
+        type: "SET_SERVER_ERROR",
+        error: err.message || "Login failed. Try again.",
+      });
+      if (emailRef.current) emailRef.current.focus();
     }
   };
 
   if (success) {
     return (
-      <div className="max-w-md mx-auto mt-16 p-6 bg-[#121212] rounded-lg shadow text-white">
-        <h2 className="text-2xl font-semibold mb-4 text-green-400">Welcome back 👋</h2>
+      <div className="min-h-[calc(100vh-72px)] flex items-center justify-center bg-gradient-to-br from-[#090f0fff] to-[#0c5c5fff] text-white p-4 animate-ultraSmoothFadeIn">
+      <div className="max-w-md mx-auto p-6 bg-[#121212] rounded-lg shadow text-white">
+        <h2 className="text-2xl font-semibold mb-4 text-green-400">Welcome back👋</h2>
         <p className="text-gray-300">You're now logged in. Redirecting…</p>
+      </div>
       </div>
     );
   }
@@ -154,7 +159,6 @@ export default function SignInForm() {
         <label className="block mb-6">
           <div className="flex justify-between items-center">
             <span className="text-sm font-medium text-gray-300">Password</span>
-            <a href="/forgot-password" className="text-xs text-[#20bec4ff] hover:underline">Forgot?</a>
           </div>
 
           <div className="relative mt-1">

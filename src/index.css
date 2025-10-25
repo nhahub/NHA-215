@@ -10,6 +10,8 @@
   .nav-t {
     @apply inline-block text-[16px] hover:font-semibold hover:text-pri hover:rounded-sm hover:scale-125 transition-all duration-300 ease-in-out
   }
+  
+
 }
 
 @keyframes ultraSmoothFadeIn {
