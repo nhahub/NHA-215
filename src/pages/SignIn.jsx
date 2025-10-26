@@ -92,7 +92,7 @@ export default function SignInForm() {
       localStorage.setItem("userToken", token);
 
 
-      setTimeout(() => navigate("/"), 2000);
+      setTimeout(() => navigate("/"), 1500);
       dispatch({ type: "SET_SUCCESS" });
       // Redirect here if needed
     } catch (err) {
