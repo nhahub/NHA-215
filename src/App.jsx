@@ -10,6 +10,8 @@ import Chatbot from "./pages/Chatbot";
 import Errorpage from "./pages/Errorpage";
 import Logout from "./pages/Logout";
 import CVform from "./pages/CVform";
+import ProtectedRoute from "./proutes/ProtectedRoute";
+import PublicRoute from "./proutes/PublicRoute";
 function App() {
   return (
     <>
@@ -21,11 +23,11 @@ function App() {
         <Route path="*" element={<Errorpage />} /> 
         <Route path="/" element={<Home />} /> {/* in nav bar */}
         <Route path="/about" element={<About />} /> {/* in nav bar */}
-        <Route path="/chatbot" element={<Chatbot />} /> {/* in nav bar */}
-        <Route path="/logout" element={<Logout />} /> {/* in nav bar */}
-        <Route path="/signin" element={<SignIn />} /> {/* in About */}
-        <Route path="/signup" element={<Signup />} /> {/* in Singin */}
-        <Route path="/CVform" element={<CVform />} /> {/* in Singin */}
+        <Route path="/signin" element={<PublicRoute> <SignIn /> </PublicRoute>} /> {/* in About */}
+        <Route path="/signup" element={<PublicRoute> <Signup /> </PublicRoute>} /> {/* in About */}
+        <Route path="/logout" element={<ProtectedRoute> <Logout /> </ProtectedRoute> } /> {/* in nav bar */}
+        <Route path="/chatbot" element={<ProtectedRoute> <Chatbot /> </ProtectedRoute>} /> {/* in nav bar */}
+        <Route path="/CVform" element={<ProtectedRoute> <CVform /> </ProtectedRoute> } /> {/* in nav bar */}
       </Routes>
       {/* end routes */}
     </>

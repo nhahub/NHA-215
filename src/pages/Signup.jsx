@@ -105,7 +105,7 @@ export default function SignUpForm() {
       localStorage.setItem("userEmail", user.email);
     
       dispatch({ type: "SET_SUCCESS" });
-      setTimeout(() => navigate("/"), 2000);
+      setTimeout(() => navigate("/"), 1500);
     } catch (err) {
       dispatch({
         type: "SET_SERVER_ERROR",
