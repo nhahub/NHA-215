@@ -18,7 +18,7 @@ const Errorpage = () => {
                 Back to home
                 </button>
                 <button
-                onClick={() => navigate('/')}
+                onClick={() => navigate('/dashboard')}
                 className='btn-p'
                 >
                 Your dashboard
