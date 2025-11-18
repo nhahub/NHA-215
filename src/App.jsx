@@ -12,6 +12,8 @@ import Logout from "./pages/Logout";
 import CVform from "./pages/CVform";
 import ProtectedRoute from "./proutes/ProtectedRoute";
 import PublicRoute from "./proutes/PublicRoute";
+import Dashboard from "./pages/Dashboard";
+import Powerbi from "./pages/Powerbi";
 function App() {
   return (
     <>
@@ -28,6 +30,8 @@ function App() {
         <Route path="/logout" element={<ProtectedRoute> <Logout /> </ProtectedRoute> } /> {/* in nav bar */}
         <Route path="/chatbot" element={<ProtectedRoute> <Chatbot /> </ProtectedRoute>} /> {/* in nav bar */}
         <Route path="/CVform" element={<ProtectedRoute> <CVform /> </ProtectedRoute> } /> {/* in nav bar */}
+        <Route path="/dashboard" element={<ProtectedRoute> <Dashboard /> </ProtectedRoute> } /> {/* in nav bar */}
+        <Route path="/powerbi" element={<ProtectedRoute> <Powerbi /> </ProtectedRoute> } /> {/* in nav bar */}
       </Routes>
       {/* end routes */}
     </>
