@@ -118,9 +118,17 @@ export default function SignUpForm() {
 
   if (success) {
     return (
-      <div className="min-h-[calc(100vh-72px)] flex items-center justify-center bg-gradient-to-br from-[#090f0fff] to-[#0c5c5fff] text-white p-6 animate-ultraSmoothFadeIn">
+<div className="min-h-[calc(100vh-72px)] flex items-center justify-center bg-gradient-to-br from-[#090f0fff] to-[#0c5c5fff] text-white p-6 animate-ultraSmoothFadeIn">
       <div className="max-w-md mx-auto p-6 bg-[#121212] rounded-lg shadow text-white">
         <h2 className="text-2xl font-semibold mb-4 text-green-400">Account created 🎉</h2>
+        <p className="text-gray-300 flex items-center content-center gap-1">You're now logged in. Redirecting… 
+          <span>
+          <svg className="h-4 w-4 animate-spin" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" strokeOpacity="0.2" />
+              <path d="M2 12a10 10 0 0110-10" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
+            </svg>
+          </span>
+        </p>
       </div>
       </div>
     );
