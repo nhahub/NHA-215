@@ -1,4 +1,3 @@
-// import { NavLink, Route, Routes, useNavigate } from "react-router-dom";
 import React from "react";
 import { NavLink, Route, Routes, Link } from "react-router-dom";
 import MainNav from "./layouts/MainNav";

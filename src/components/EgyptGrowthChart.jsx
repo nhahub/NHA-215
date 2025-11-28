@@ -14,17 +14,18 @@ export default function EgyptGrowthChart() {
         { x: "2022", y: 6.59 },
         { x: "2023", y: 3.76 },
         { x: "2024", y: 2.40 },
-        // ممكن تضيف توقعات:
-        { x: "2025", y: 4.08 }, // من Statistictimes :contentReference[oaicite:3]{index=3}
+        { x: "2025", y: 4.08 }, 
       ],
     },
   ];
 
   return (
-    <div className="h-[400px] bg-[#0A1010] rounded-3xl">
+    // التعديل هنا: خليت الطول متغير والبادينج يتغير حسب الشاشة
+    <div className="h-[350px] md:h-[400px] w-full bg-[#0A1010] rounded-3xl p-2 md:p-4">
       <ResponsiveLine
         data={data}
-        margin={{ top: 50, right: 50, bottom: 50, left: 50 }}
+        // قللت الهوامش اليمين واللي فوق عشان الموبايل
+        margin={{ top: 30, right: 20, bottom: 50, left: 50 }}
         xScale={{ type: "point" }}
         yScale={{
           type: "linear",
@@ -39,7 +40,7 @@ export default function EgyptGrowthChart() {
           tickPadding: 5,
           tickRotation: 0,
           legend: "Year",
-          legendOffset: 30,
+          legendOffset: 36,
           legendPosition: "middle",
         }}
         axisLeft={{
@@ -65,13 +66,38 @@ export default function EgyptGrowthChart() {
         motionStiffness={90}
         motionDamping={15}
         theme={{
+          // ضفت لون للكتابة عشان تبان على الخلفية السوداء
+          text: {
+            fill: "#e0e0e0", 
+            fontSize: 12,
+          },
           axis: {
             ticks: {
               line: {
                 stroke: "#0E898E",
               },
+              text: {
+                fill: "#9ca3af", // لون رمادي فاتح للأرقام
+              }
             },
+            legend: {
+                text: {
+                    fill: "#ffffff" // لون أبيض للعناوين (Year/Growth)
+                }
+            }
           },
+          grid: {
+            line: {
+                stroke: "#333333", // لون الجريد يكون هادي
+                strokeWidth: 1
+            }
+          },
+          tooltip: {
+            container: {
+                background: "#1f2937", // خلفية التولتيب
+                color: "#fff",
+            }
+          }
         }}
       />
     </div>

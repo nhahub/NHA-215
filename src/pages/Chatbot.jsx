@@ -112,26 +112,30 @@ const Chatbot = () => {
     }
 
     return (
-        <section className='relative min-h-[calc(100vh-72px)] bg-pri p-16 flex items-center flex-col'>
+        <section className='relative min-h-[calc(100vh-72px)] bg-pri p-4 md:p-16 flex items-center flex-col'>
             {loadingP && (
                 <Loadingpage />
             )}
-            <div className='w-full h-[625px] bg-[#0e1617] rounded-3xl p-6 gap-5 flex flex-col relative'>
-                <div className='mb-2 flex flex-wrap justify-between'>
+            {/* Main Container: h-[85vh] for mobile to fit screen, fixed height for desktop */}
+            <div className='w-full h-[85vh] md:h-[625px] bg-[#0e1617] rounded-3xl p-4 md:p-6 gap-3 md:gap-5 flex flex-col relative'>
+                
+                {/* Header Section */}
+                <div className='mb-2 flex flex-col md:flex-row justify-between gap-3 md:gap-0'>
                     <div className='flex gap-2 flex-wrap'> 
                     {sources.map((src, i) => (
-                        <button key={i} onClick={() => {selectSource(src); setLoading(true)}} className={`px-3 py-1 rounded ${selectedSource===src ? "bg-[#0e898e]" : "bg-gray-600"}`}>
+                        <button key={i} onClick={() => {selectSource(src); setLoading(true)}} className={`px-3 py-1 text-sm md:text-base rounded ${selectedSource===src ? "bg-[#0e898e]" : "bg-gray-600"}`}>
                             {src}
                         </button>
-
                     ))}
                     </div>
-                    <button onClick={generateQuestion} className='px-3 py-1 bg-green-600 rounded'>Generate Question</button>
+                    <button onClick={generateQuestion} className='px-3 py-2 md:py-1 bg-green-600 rounded w-full md:w-auto text-sm md:text-base'>Generate Question</button>
                 </div>
-                <div className=' w-full h-[500px] border-solid border-white border-[2px] rounded-3xl p-5 overflow-auto'>
+
+                {/* Chat Area: flex-1 allows it to fill remaining space instead of fixed height */}
+                <div className='w-full flex-1 border-solid border-white border-[2px] rounded-3xl p-3 md:p-5 overflow-auto'>
                     {messages.map((msg, index) => (
                         <div key={index} className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'} mb-2`}>
-                            <div className={`p-3 rounded-lg ${msg.sender === 'user' ? 'bg-sec text-white' : 'bg-gray-300 text-black'}`}>
+                            <div className={`p-3 rounded-lg max-w-[85%] break-words ${msg.sender === 'user' ? 'bg-sec text-white' : 'bg-gray-300 text-black'}`}>
                                 {msg.text}
                             </div>
                         </div> 
@@ -144,10 +148,12 @@ const Chatbot = () => {
                         </div> 
                     }
                 </div>
-                <div className='flex flex-col gap-2 '>
+
+                {/* Footer / Input Section */}
+                <div className='flex flex-col gap-2'>
                     <div className='flex items-center contain-content gap-2'>
                     <input
-                    className=' w-full h-[30px] p-2 rounded-3xl border-none focus:border-none' 
+                    className='w-full h-[35px] md:h-[30px] p-2 rounded-3xl border-none focus:border-none text-black' 
                     type="text"
                     name='massage'
                     placeholder="Type your answer..."
@@ -156,16 +162,16 @@ const Chatbot = () => {
                     onKeyDown={handleKeyDown}
                     />
                     </div>
-                    <div className='flex gap-2 '>
+                    <div className='flex gap-2'>
                     <button 
                     onClick={submitAnswer} 
-                    className={`w-full h-[30px] text-[16px] text-white bg-[#0e898e] rounded-3xl hover:bg-[#172627] transition-all ease-in duration-300 ${!input.trim() ? 'opacity-50 cursor-not-allowed' : ''}`} 
+                    className={`w-full h-[35px] md:h-[30px] text-[14px] md:text-[16px] text-white bg-[#0e898e] rounded-3xl hover:bg-[#172627] transition-all ease-in duration-300 ${!input.trim() ? 'opacity-50 cursor-not-allowed' : ''}`} 
                     disabled={!input.trim()}>
                         Send Answer
                     </button>
                         <button 
                         onClick={clearChat} 
-                        className=' w-full h-[30px] text-[16px] text-white bg-[#0e898e] rounded-3xl hover:bg-[#172627] transition-all ease-in duration-300' >
+                        className='w-full h-[35px] md:h-[30px] text-[14px] md:text-[16px] text-white bg-[#0e898e] rounded-3xl hover:bg-[#172627] transition-all ease-in duration-300' >
                         Clear
                         </button>
                     </div>
