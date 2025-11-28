@@ -29,31 +29,29 @@ const MainNav = () => {
             <NavLink to='/Chatbot' className='nav-t'> Chatbot</NavLink>
         </nav>
       </div>
-      <div className="flex gap-4 ">
-        {!token && ( <>
-          <button
-            onClick={() => navigate("/signin")}
-            className="text-[16px] text-white hover:bg-[#0e898e] p-4 rounded-[24px] hover:scale-110 bg-[#172627] hover:text-[#172627] hover:font-semibold transition-all ease-in duration-300"
-            >
-            Sign In
-          </button>
-          <button
-            onClick={() => navigate("/signup")}
-            className="text-[16px] text-white hover:bg-[#0e898e] p-4 rounded-[24px] hover:scale-110 bg-[#172627] hover:text-[#172627] hover:font-semibold transition-all ease-in duration-300"
-            >
-            Sign Up
-          </button>
-            </>
-      )}
-      </div>
-      {token && (
-                <button
-                onClick={() => navigate("/logout")}
-                className="text-[16px] text-white hover:bg-[#0e898e] p-4 rounded-[24px] hover:scale-110 bg-[#172627] hover:text-red-600 hover:font-semibold transition-all ease-in duration-300"
-                >
-                Logout
-                </button>
-      )}
+
+<button
+  onClick={() => navigate("/logout")}
+  className={`text-[16px] text-white hover:bg-[#0e898e] p-4 rounded-[24px] hover:scale-110 bg-[#172627] hover:text-red-600 hover:font-semibold transition-all ease-in duration-300 ${token ? "block" : "hidden"}`}
+>
+  Logout
+</button>
+
+
+<div className={`gap-4 ${!token ? "flex" : "hidden"}`}>
+  <button
+    onClick={() => navigate("/signin")}
+    className="text-[16px] text-white hover:bg-[#0e898e] p-4 rounded-[24px] hover:scale-110 bg-[#172627] hover:text-[#172627] hover:font-semibold transition-all ease-in duration-300"
+  >
+    Sign In
+  </button>
+  <button
+    onClick={() => navigate("/signup")}
+    className="text-[16px] text-white hover:bg-[#0e898e] p-4 rounded-[24px] hover:scale-110 bg-[#172627] hover:text-[#172627] hover:font-semibold transition-all ease-in duration-300"
+  >
+    Sign Up
+  </button>
+</div>
     </div>
   )
 }
