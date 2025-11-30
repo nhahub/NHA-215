@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { useNavigate } from "react-router-dom";
-import logo from "../assets/logo.png"
 
 const MainNav = () => {
 
@@ -23,10 +22,12 @@ const MainNav = () => {
         <nav className="flex flex-col md:flex-row text-white gap-8 items-center">
             <NavLink to='/' className='nav-t'> Home</NavLink>
             <NavLink to='/About' className='nav-t'> About</NavLink>
+            <NavLink to='/profile-page' className='nav-t'> Profile</NavLink>
             <NavLink to='/dashboard' className='nav-t'> Dashboard</NavLink>
             <NavLink to='/CVform' className='nav-t'> Review CV</NavLink>
             <NavLink to='/jop' className='nav-t'> Job Recommendations</NavLink>
             <NavLink to='/Chatbot' className='nav-t'> Chatbot</NavLink>
+
         </nav>
       </div>
 
