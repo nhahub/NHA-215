@@ -151,7 +151,6 @@ const Chatbot = () => {
                         ))}
                     </div>
 
-                    {/* Generate Button: نفس ستايل زرار Start Exploring */}
                     <button
                         onClick={generateQuestion}
                         disabled={loading || !selectedSource}
@@ -168,9 +167,9 @@ const Chatbot = () => {
                             <div className={`
                                 max-w-[85%] md:max-w-[70%] p-4 rounded-2xl text-sm md:text-base leading-relaxed shadow-sm
                                 ${msg.sender === 'user'
-                                    // User Message: واخد لون السيان مع نص أسود لتباين عالي زي زرار الموقع
+                                    // User Message
                                     ? 'bg-[#20bec4] text-black font-medium rounded-tr-sm' 
-                                    // Bot Message: واخد ستايل شفاف غامق
+                                    // Bot Message
                                     : 'bg-white/10 text-white/90 border border-white/10 rounded-tl-sm'} 
                             `}>
                                 <p className="whitespace-pre-wrap">{msg.text}</p>
@@ -216,7 +215,6 @@ const Chatbot = () => {
                         <button
                             onClick={submitAnswer}
                             disabled={!input.trim()}
-                            // Send Button: نفس ستايل زرار Start Exploring
                             className={`px-8 py-2 h-[45px] text-black font-bold bg-[#20bec4] hover:bg-[#169ba0] rounded-xl shadow-lg transition-all ease-in duration-200 ${!input.trim() ? 'opacity-50 cursor-not-allowed' : ''}`}
                         >
                             Send Answer

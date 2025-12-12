@@ -3,7 +3,7 @@ import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
-// إعدادات المشروع (Configuration)
+
 const firebaseConfig = {
   apiKey: "AIzaSyD3KVbnryeDG3ZdrGORbtV4WytdM03djMI",
   authDomain: "nha-215.firebaseapp.com",
@@ -16,9 +16,9 @@ const firebaseConfig = {
 // 1. Initialize Firebase App
 const app = initializeApp(firebaseConfig);
 
-// 2. Export Services (عشان نستخدمهم في باقي المشروع)
-export const auth = getAuth(app);       // للمصادقة (Login/Signup)
-export const db = getFirestore(app);    // لقاعدة البيانات (Jobs Data)
-export const storage = getStorage(app); // لرفع الملفات (CVs/Images)
+// 2. Export Services 
+export const auth = getAuth(app);      
+export const db = getFirestore(app); 
+export const storage = getStorage(app);
 
 export default app;
