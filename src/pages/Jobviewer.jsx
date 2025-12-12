@@ -326,7 +326,7 @@ const Jobviewer = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
                     {jobs.length > 0 ? (
                         jobs.map((job) => (
-                            <article key={job.id} className="bg-gradient-to-b from-[#071014] to-[#0b1313] p-6 rounded-xl border border-[#0e898e]/10 hover:border-[#0e898e] shadow-xl transition-all ease-in duration-300 hover:-translate-y-1">
+                            <div key={job.id} className="bg-gradient-to-b from-[#071014] to-[#0b1313] p-6 rounded-xl border border-[#0e898e]/10 hover:border-[#0e898e] shadow-xl transition-all ease-in duration-300 hover:-translate-y-1">
                                 <div className="flex justify-between items-start mb-4">
                                     <div>
                                         <h3 className="text-xl font-bold text-white">{job.jobTitle}</h3>
@@ -364,7 +364,7 @@ const Jobviewer = () => {
                                         </button>
                                     </div>
                                 </div>
-                            </article>
+                            </div>
                         ))
                     ) : (
                         <div className="col-span-full h-[520px] flex flex-col items-center justify-center py-20 text-gray-400 border-2 border-solid border-[#0e898e]/10 rounded-xl">
