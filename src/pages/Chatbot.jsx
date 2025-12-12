@@ -140,9 +140,7 @@ const Chatbot = () => {
                                 disabled={loading}
                                 className={`px-4 py-1.5 text-sm rounded-xl transition-all duration-300 border font-medium ${
                                     selectedSource === src
-                                        // Active State: واخد لون السيان المميز
                                         ? "bg-[#20bec4]/20 border-[#20bec4] text-[#20bec4] shadow-[0_0_10px_rgba(32,190,196,0.2)]"
-                                        // Inactive State: واخد ستايل شفاف
                                         : "bg-white/5 border-white/10 text-white/70 hover:bg-white/10 hover:text-white"
                                 }`}
                             >
